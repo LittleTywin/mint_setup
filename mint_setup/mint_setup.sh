@@ -9,7 +9,7 @@ apt-get install git
 echo "Downloading my dotfiles"
 #get my dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/home/dimitris/dotfiles --work-tree=/home/dimitris'
-echo ".dotfiles" >> .gitignore
+echo ".dotfiles" >> /home/dimitris/.gitignore
 git clone --bare https://github.com/LittleTywin/dotfiles.git /home/dimitris/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/home/dimitris/dotfiles --work-tree=/home/dimitris'
 rm -f *bash* *profile* 
