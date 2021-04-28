@@ -12,7 +12,7 @@ alias dotfiles='/usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/hom
 echo ".dotfiles" >> /home/dimitris/.gitignore
 git clone --bare https://github.com/LittleTywin/dotfiles.git /home/dimitris/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/home/dimitris'
-rm -f *bash* *profile* 
+rm -f .bash* .profile 
 dotfiles checkout
 echo "Downloading some more system tools..."
 apt-get install python3-pip vim git samba chromium terminator fonts-powerline software-properties-common apt-transport-https -y #> /dev/null
