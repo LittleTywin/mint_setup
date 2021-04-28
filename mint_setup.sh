@@ -6,12 +6,10 @@ echo "This might take some time."
 apt-get dist-upgrade -y #> /dev/null
 echo "Downloading my dotfiles"
 #get my dotfiles
-alias dotfiles='/usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/home/dimitris'
 echo ".dotfiles" >> /home/dimitris/.gitignore
 git clone --bare https://github.com/LittleTywin/dotfiles.git /home/dimitris/.dotfiles
-alias dotfiles='/usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/home/dimitris'
-rm -f .bash* .profile 
-dotfiles checkout
+rm -f /home/dimitris/.bash* /home/dimitris/.profile /home/dimitris/.gitignore 
+/usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/home/dimitris checkout
 echo "Downloading some more system tools..."
 apt-get install python3-pip vim git samba chromium terminator fonts-powerline software-properties-common apt-transport-https -y #> /dev/null
 
