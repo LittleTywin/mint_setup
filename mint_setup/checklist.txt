@@ -1,6 +1,0 @@
-1-> set nvidia drivers
-2-> run install script
-	while running:
-	1->setup hdd mounts
-	2->customize desktop
-	3->setup thunderbird
