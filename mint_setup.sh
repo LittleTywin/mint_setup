@@ -1,4 +1,20 @@
 #!/bin/bash
+echo "         _nnnn_"
+echo "        dGGGGMMb"
+echo "       @p~qp~~qMb"
+echo "       M|@||@) M|"
+echo "       @,----.JM|"
+echo "      JS^\__/  qKL"
+echo "     dZP        qKRb"
+echo "    dZP          qKKb"
+echo "   fZP            SMMb"
+echo "   HZM            MMMM"
+echo "   FqM            MMMM"
+echo " __| ".        |\dS"qML"
+echo " |    `.       | `' \Zq"
+echo "_)      \.___.,|     .'"
+echo "\____   )MMMMMP|   .'"
+echo "     \`-'       \`--' hjm"
 
 DOTFILES_REMOTE=https://github.com/LittleTywin/dotfiles.git
 
@@ -39,4 +55,6 @@ done < apt_list.txt
 echo "Cleaning system"
 apt-get purge firefox gnome-terminal -y #> /dev/null
 apt-get autoremove -y #> /dev/null
+
+echo "Have fun!"
 
