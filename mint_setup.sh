@@ -1,27 +1,40 @@
 #!/bin/bash
+
+DOTFILES_REMOTE=https://github.com/LittleTywin/dotfiles.git
+
+#check if running as root
+if [ "$(id -u)" -ne 0 ];then
+    echo "************************************"
+    echo "*Must be run with root priviledges!*"
+    echo "************************************"
+    exit 1
+fi
+
 echo "Updating repos..."
-apt-get update #>/dev/null 
+apt-get update > /dev/null 
 echo "Upgrading system..."
 echo "This might take some time."
-apt-get dist-upgrade -y #> /dev/null
-echo "Downloading my dotfiles"
-#get my dotfiles
-echo ".dotfiles" >> /home/dimitris/.gitignore
-git clone --bare https://github.com/LittleTywin/dotfiles.git /home/dimitris/.dotfiles
-rm -f /home/dimitris/.bash* /home/dimitris/.profile /home/dimitris/.gitignore 
-/usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/home/dimitris checkout
-echo "Downloading some more system tools..."
-apt-get install python3-pip vim git samba chromium terminator software-properties-common apt-transport-https -y #> /dev/null
+apt-get upgrade -y  > /dev/null
 
-echo "Installing vscode..."
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - #> /dev/null
-add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" #> /dev/null
-apt update #> /dev/null
-apt-get install code -y #> /dev/null 
+echo "Downloading my awsome dotfiles"
+SUDO_USER_DIR=$(eval echo "~$SUDO_USER")
+echo ".dotfiles" >> $SUDO_USER_DIR/.gitignore
+git clone --bare $DOTFILES_REMOTE $SUDO_USER_DIR/.dotfiles >> /dev/null
+rm -f $SUDO_USER_DIR/.bash* $SUDO_USER_DIR/.profile $SUDO_USER_DIR/.gitignore  
+/usr/bin/git --git-dir=$SUDO_USER_DIR/.dotfiles --work-tree=$SUDO_USER_DIR/ checkout
+/usr/bin/git --git-dir=$SUDO_USER_DIR/.dotfiles --work-tree=$SUDO_USER_DIR/ config --local status.showUntrackedFiles no
+
+echo "Downloading some more system tools and programms..."
+#add vscode repo
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - > /dev/null
+add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /dev/null
+apt update > /dev/null
+while read -r line;
+do
+   apt-get install $line -y >> /dev/null;
+done < apt_list.txt
 
 
-echo "Installing some more stuff..."
-apt-get install virtualbox -y
 
 echo "Cleaning system"
 apt-get purge firefox gnome-terminal -y #> /dev/null

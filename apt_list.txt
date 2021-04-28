@@ -1,0 +1,14 @@
+python3-pip
+vim
+git
+samba
+chromium
+terminator
+software-properties-common
+apt-transport-https
+remmina
+remmina-plugin-rdp
+remmina-plugin-secret
+filezilla
+code
+virtualbox
