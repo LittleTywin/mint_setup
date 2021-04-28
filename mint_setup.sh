@@ -4,8 +4,6 @@ apt-get update #>/dev/null
 echo "Upgrading system..."
 echo "This might take some time."
 apt-get dist-upgrade -y #> /dev/null
-echo "Installing git..."
-apt-get install git
 echo "Downloading my dotfiles"
 #get my dotfiles
 alias dotfiles='/usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/home/dimitris'
