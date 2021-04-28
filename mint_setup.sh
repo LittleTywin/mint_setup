@@ -11,7 +11,7 @@ git clone --bare https://github.com/LittleTywin/dotfiles.git /home/dimitris/.dot
 rm -f /home/dimitris/.bash* /home/dimitris/.profile /home/dimitris/.gitignore 
 /usr/bin/git --git-dir=/home/dimitris/.dotfiles --work-tree=/home/dimitris checkout
 echo "Downloading some more system tools..."
-apt-get install python3-pip vim git samba chromium terminator fonts-powerline software-properties-common apt-transport-https -y #> /dev/null
+apt-get install python3-pip vim git samba chromium terminator software-properties-common apt-transport-https -y #> /dev/null
 
 echo "Installing vscode..."
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - #> /dev/null
