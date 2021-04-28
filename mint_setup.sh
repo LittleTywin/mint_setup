@@ -50,7 +50,7 @@ do
    apt-get install $line -y >> /dev/null;
 done < apt_list.txt
 
-
+echo "alias dotfiles=/usr/bin/git --git-dir=$SUDO_USER_DIR/.dotfiles --work-tree=$SUDO_USER_DIR" >> $SUDO_USER_DIR/.bash_aliases
 
 echo "Cleaning system"
 apt-get purge firefox gnome-terminal -y #> /dev/null
