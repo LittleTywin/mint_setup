@@ -12,3 +12,5 @@ remmina-plugin-secret
 filezilla
 code
 virtualbox
+valgrind
+
