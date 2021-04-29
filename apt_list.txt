@@ -20,3 +20,4 @@ bridge-utils
 virt-manager
 neofetch
 powerline-shell
+
