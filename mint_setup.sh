@@ -10,8 +10,8 @@ echo "    dZP          qKKb"
 echo "   fZP            SMMb"
 echo "   HZM            MMMM"
 echo "   FqM            MMMM"
-echo " __| ".        |\dS"qML"
-echo " |    `.       | `' \Zq"
+echo ' __| ".        |\dS"qML'
+echo " |    \`.       | \`' \Zq"
 echo "_)      \.___.,|     .'"
 echo "\____   )MMMMMP|   .'"
 echo "     \`-'       \`--' hjm"
@@ -34,8 +34,10 @@ apt-get upgrade -y  > /dev/null
 
 echo "Downloading my awsome dotfiles"
 SUDO_USER_DIR=$(eval echo "~$SUDO_USER")
+SUDO_USER_GROUP=$(eval echo "$SUDO_USER:")
 echo ".dotfiles" >> $SUDO_USER_DIR/.gitignore
 git clone --bare $DOTFILES_REMOTE $SUDO_USER_DIR/.dotfiles >> /dev/null
+chown -R $SUDO_USER_GROUP $SUDO_USER_DIR/.dotfiles 
 rm -f $SUDO_USER_DIR/.bash* $SUDO_USER_DIR/.profile $SUDO_USER_DIR/.gitignore  
 /usr/bin/git --git-dir=$SUDO_USER_DIR/.dotfiles --work-tree=$SUDO_USER_DIR/ checkout
 /usr/bin/git --git-dir=$SUDO_USER_DIR/.dotfiles --work-tree=$SUDO_USER_DIR/ config --local status.showUntrackedFiles no
