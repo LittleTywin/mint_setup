@@ -46,13 +46,14 @@ echo "Downloading some more system tools and programms..."
 #add vscode repo
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - > /dev/null
 add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /dev/null
-apt update > /dev/null
+apt-get update > /dev/null
 while read -r line;
 do
    apt-get install $line -y >> /dev/null;
 done < apt_list.txt
 
 echo "alias dotfiles=/usr/bin/git --git-dir=$SUDO_USER_DIR/.dotfiles --work-tree=$SUDO_USER_DIR" >> $SUDO_USER_DIR/.bash_aliases
+pip3 install powerline-shell
 
 echo "Cleaning system"
 apt-get purge firefox gnome-terminal -y #> /dev/null
